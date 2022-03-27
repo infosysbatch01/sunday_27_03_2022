@@ -1,0 +1,469 @@
+Q 1.
+public class Student {
+public String name = "";
+public int age = 0;
+public String major = "Undeclared";
+public boolean fulltime = true;
+
+public void display() {
+System.out.println("Name: " + name + " Major: " + major);
+}
+public boolean isFullTime() {
+return fulltime;
+}
+}
+Given:
+Public class TestStudent {
+Public static void main(String[] args) {
+Student bob = new Student ();
+Student jian = new Student();
+bob.name = "Bob";
+bob.age = 19;
+jian = bob; jian.name = "Jian";
+System.out.println("Bob's Name: " + bob.name);
+}
+}
+What is the result when this program is executed?
+A. Bob's Name: Bob
+B. Bob's Name: Jian
+C. Nothing prints
+D. Bob’s name
+------------------------------------------------------------------------------------------
+Q 2.
+String valid = "true";
+if (valid) System.out.println (“valid”);
+else System.out.println ("not valid");
+What is the result?
+A. Valid
+B. not valid
+C. Compilation fails
+D. An IllegalArgumentException is thrown at run time
+
+----------------------------------------------------------------------------------------------------
+Q 3
+public class ScopeTest {
+int z;
+public static void main(String[] args){
+ScopeTest myScope = new ScopeTest();
+int z = 6;
+System.out.println(z);
+myScope.doStuff();
+System.out.println(z);
+System.out.println(myScope.z);
+}
+
+void doStuff() {
+int z = 5;
+doStuff2();
+System.out.println(z);
+}
+void doStuff2() {
+z=4;
+}
+}
+What is the result?
+A. 6 5 6 4
+B. 6 5 5 4
+C. 6 5 6 6
+D. 6 5 6 5
+
+-----------------------------------------------------------------------------------------------
+Q 4
+Given the code fragment:
+int b = 4;
+b -- ;
+System.out.println (-- b);
+System.out.println(b);
+What is the result?
+A. 2 2
+B. 1 2
+C. 3 2
+D. 3 3
+
+------------------------------------------------------------------------------------------------------
+Q 5
+Given the code fragment:
+Int [] [] array = {{0}, {0, 1}, {0, 2, 4}, {0, 3, 6, 9}, {0, 4, 8, 12, 16}};
+System.out.printIn(array [4] [1]);
+System.out.printIn (array) [1][4]);
+int [] [] array = {{0}, {0, 1}, {0, 2, 4}, {0, 3, 6, 9}, {0, 4, 8, 12, 16}};
+System.out.println(array [4][1]);
+System.out.println(array) [1][4]);
+What is the result?
+A. 4 Null
+B. Null 4
+C. An IllegalArgumentException is thrown at run time
+D. 4 An ArrayIndexOutOfBoundException is thrown at run time
+
+
+------------------------------------------------------------------------------------------------
+Q 6
+public class DoCompare1 {
+public static void main(String[] args) {
+String[] table = {"aa", "bb", "cc"};
+for (String ss: table) {
+int ii = 0;
+while (ii < table.length) {
+System.out.println(ss + ", " + ii);
+ii++;
+}
+}
+How many times is 2 printed as a part of the output?
+A. Zero
+B. Once
+C. Twice
+D. Thrice
+E. Compilation fails.
+
+--------------------------------------------------------------------------------------------------
+Q 7
+Given:
+class X {
+String str = "default";
+X(String s) { str = s;}
+void print () { System.out.println(str); }
+public static void main(String[] args) {
+new X("hello").print();
+}
+
+}
+What is the result?
+A. hello
+B. default
+C. Compilation fails
+D. The program prints nothing
+E. An exception is thrown at run time
+
+------------------------------------------------------------------------------------------------------Q 8
+public class SampleClass {
+public static void main(String[] args) {
+AnotherSampleClass asc = new AnotherSampleClass();
+SampleClass sc = new SampleClass();
+// TODO code application logic here
+}
+}
+class AnotherSampleClass extends SampleClass {
+}
+Which statement, when inserted into line "// TODO code application logic here ", is valid change?
+A. asc = sc;
+B. sc = asc;
+C. asc = (object) sc;
+D. asc = sc.clone ()
+
+
+------------------------------------------------------------------------------------------
+Q 9
+Given the code fragment:
+System.out.println("Result: " + 2 + 3 + 5);
+System.out.println("Result: " + 2 + 3 * 5);
+What is the result?
+A. Result: 10
+Result: 30
+B. Result: 10
+Result: 25
+C. Result: 235
+Result: 215
+D. Result: 215
+Result: 215
+E. Compilation fails
+
+------------------------------------------------------------------------------------------------------
+Q 10
+Which code fragment is illegal?
+A. class Base1 {
+abstract class Abs1 { }}
+B. abstract class Abs1 {
+void doit () { }
+}
+C. class Basel {
+abstract class Abs1 extends Basel {
+D. abstract int var1 = 89;
+
+--------------------------------------------------------------------------------------------------
+Q 11
+Given the code fragment:
+int a = 0;
+
+a++;
+System.out.println(a++);
+System.out.println(a);
+What is the result?
+A. 
+1
+2
+B. 
+0
+1
+C. 
+1
+1
+D. 
+2
+2
+
+------------------------------------------------------------------------------------------------------
+Q 12
+Given:
+public class x{
+public static void main (string [] args){
+String theString = "Hello World";
+System.out.println(theString.charAt(11));
+}
+}
+What is the result?
+
+A. There is no output
+B. d is output
+C. A StringIndexOutOfBoundsException is thrown at runtime
+D. An ArrayIndexOutOfBoundsException is thrown at runtime
+E. A NullPointException is thrown at runtime
+F. A StringArrayIndexOutOfBoundsException is thrown at runtime
+
+---------------------------------------------------------------------------------------------------
+Q 13 	
+Given a java source file:
+class x {
+x () {}
+private void one () {}
+}
+public class Y extends x {
+Y () {}
+private void two () {one();}
+public static void main (string [] args) {
+new Y().two ();
+}
+}
+What changes will make this code compile?
+A. adding the public modifier to the declaration of class x
+B. adding the protected modifier to the x() constructor
+C. changing the private modifier on the declaration of the one() method to protected
+D. removing the Y () constructor
+E. removing the private modifier from the two () method
+
+---------------------------------------------------------------------------------------------------
+Q 14
+Given:
+String message1 = "Wham bam!";
+String message2 = new String("Wham bam!");
+if (message1 == message2)
+System.out.println("They match");
+if (message1.equals(message2))
+System.out.println("They really match");
+What is the result?
+A. They match
+They really match
+B. They really match
+C. They match
+D. Nothing Prints
+E. They really match
+
+
+
+-----------------------------------------------------------------------------------
+Q 15
+Given the code fragment:
+String h1 = "Bob";
+String h2 = new String ("Bob");
+What is the best way to test that the values of h1 and h2 are the same?
+A. if (h1 == h2)
+B. if (h1.equals(h2))
+C. if (h1 = = h2)
+D. if (h1.same(h2))
+
+--------------------------------------------------------------------------------------------------
+Q 16
+Which two are valid declarations of a two-dimensional array?
+A. int[][] array2D;
+B. int[2][2] array2D;
+C. int array2D[];
+D. int[] array2D[];
+E. int[][] array2D[];
+
+-----------------------------------------------------------------------------------------------
+Q 17
+Given the code fragment:
+System.out.println ("Result:" +3+5);
+System.out.println ("result:" + (3+5));
+What is the result?
+A. Result: 8
+Result: 8
+B. Result: 35
+Result: 8
+C. Result: 8
+Result: 35
+D. Result: 35
+Result: 35
+
+---------------------------------------------------------------------------------------------
+Q 18
+Given the code fragment:
+String color = "Red";
+switch(color) {
+case "Red":
+System.out.println("Found Red");
+case "Blue":
+System.out.println("Found Blue");
+break;
+case "White":
+System.out.println("Found White");
+break;
+default:
+System.out.println("Found Default");
+}
+What is the result?
+A. Found Red
+B. Found Red
+Found Blue
+C. Found Red
+Found Blue
+Found White
+D. Found Red
+Found Blue
+Found White
+Found Default
+
+-----------------------------------------------------------------------------------------------------
+Q 19
+Given:
+public class Bark {
+// Insert code here - Line 5
+public abstract void bark(); // Line 6
+} // Line 7
+// Line 8
+// Insert code here - Line 9
+public void bark() {
+System.out.println("woof");
+}
+}
+What code should be inserted?
+A. 5.class Dog {
+9. public class Poodle extends Dog {
+B. 5. abstract Dog {
+9. public class poodle extends Dog {
+C. 5. abstract class Dog {
+9. public class Poodle extends Dog {
+D. 5. abstract Dog {
+9. public class Poodle implements Dog {
+E. 5. abstract Dog {
+9. public class Poodle implements Dog {
+F. 5. abstract class Dog {
+9. public class Poodle implements Dog {
+
+--------------------------------------------------------------------------------------
+Q 20
+Given:
+class X {}
+class Y {Y () {}}
+class Z {z(int i ) {} }
+Which class has a default constructor?
+A. X only
+B. Y only
+C. Z only
+D. X and Y
+E. Y and Z
+F. X and Z
+G. X, Y and Z
+
+---------------------------------------------------------------------------------------------
+Q 21
+public static void main (String [] args) {
+int a, b, c = 0;
+int a, b, c;
+int g, int h, int i, = 0;
+int d, e, F;
+int k, l, m; = 0;
+
+Which two declarations will compile?
+A. int a, b, c = 0;
+B. int a, b, c;
+C. int g, int h, int i = 0;
+D. int d, e, F;
+E. int k, l, m = 0;
+
+-------------------------------------------------------------------------------
+Q 22
+Given:
+public class DoCompare4 {
+public static void main(String[] args) {
+String[] table = {"aa", "bb", "cc"};
+int ii =0;
+do
+while (ii < table.length)
+System.out.println(ii++);
+while (ii < table.length);
+}
+}
+What is the result?
+A. 0
+B. 0
+1
+2
+C. 0
+1
+2
+0
+1
+2
+0
+1
+2
+D. Compilation fails
+
+------------------------------------------------------------------------------------------
+Q 23
+Given:
+public class MyFor3 {
+public static void main(String [] args) {
+int [] xx = null;
+System.out.println(xx);
+}
+}
+What is the result?
+A. null
+B. compilation fails
+C. Java.lang.NullPointerException
+D. 0
+
+--------------------------------------------------------------------------------------------
+Q 24
+public class ScopeTest1 {
+public static void main(String[] args) {
+doStuff(); // line x1
+int x1 = x2; // line x2
+int x2 = j; // line x3
+}
+static void doStuff() {
+System.out.println(j); // line x4
+}
+static int j;
+}
+Which line causes a compilation error?
+A. line x1
+B. line x2
+C. line x3
+D. line x4
+
+----------------------------------------------------------------------------------------------
+Q 25
+Given:
+class Overloading {
+void x (int i) {
+System.out.println("one");
+}
+void x (String s) {
+System.out.println("two");
+}
+void x (double d) {
+System.out.println("three");
+}
+public static void main(String[] args) {
+new Overloading().x (4.0);
+}
+}
+What is the result?
+A. One
+B. Two
+C. Three
+D. Compilation fails
+
+
