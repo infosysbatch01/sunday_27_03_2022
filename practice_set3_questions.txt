@@ -1,0 +1,370 @@
+Q 1
+public class Hat {
+public int ID =0;
+public String name = "hat";
+public String size = "One Size Fit All";
+public String color="";
+public String getName() { return name; }
+public void setName(String name) {
+this.name = name;
+}
+}
+Given
+public class TestHat {
+public static void main(String[] args) {
+Hat blackCowboyHat = new Hat();
+}
+}
+Which statement sets the name of the Hat instance?
+A. blackCowboyHat.setName = "Cowboy Hat";
+B. setName("Cowboy Hat");
+C. Hat.setName("Cowboy Hat");
+D. blackCowboyHat.setName("Cowboy Hat");
+
+-------------------------------------------------------------------------------------------
+Q 2
+public class MyFor {
+public static void main(String[] args) {
+for (int ii = 0; ii < 4; ii++) {
+
+System.out.println("ii = "+ ii);
+ii = ii +1;
+}
+}
+}
+What is the result?
+A. ii = 0
+ii = 2
+B. ii = 0
+ii = 1
+ii = 2
+ii = 3
+C. ii =
+D. Compilation fails.
+
+--------------------------------------------------------------------------------------------
+Q 3
+public class DoBreak1 {
+public static void main(String[] args) {
+String[] table = {"aa", "bb", "cc", "dd"};
+for (String ss: table) {
+
+if ( "bb".equals(ss)) {
+continue;
+}
+System.out.println(ss);
+if ( "cc".equals(ss)) {
+break;
+}
+}
+}
+}
+What is the result?
+A. aa
+cc
+B. aa
+bb
+cc
+C. cc
+dd
+D. cc
+E. Compilation fails.
+
+-------------------------------------------------------------------------------------------------
+Q 4
+1. class StaticMethods {
+2. static void one() {
+3. two();
+4. StaticMethods.two();
+5. three();
+
+6. StaticMethods.four();
+7. }
+8. static void two() { }
+9. void three() {
+10. one();
+11. StaticMethods.two();
+12. four();
+13. StaticMethods.four();
+14. }
+15. void four() { }
+16. }
+Which three lines are illegal?
+A. line 3
+B. line 4
+C. line 5
+D. line 6
+E. line 10
+F. line 11
+G. line 12
+H. line 13
+
+--------------------------------------------------------------------------------------------
+Q 5
+Which is a valid abstract class?
+A. public abstract class Car {
+protected void accelerate();
+}
+B. public interface Car {
+protected abstract void accelerate();
+}
+
+C. public abstract class Car {
+protected final void accelerate();
+}
+D. public abstract class Car {
+protected abstract void accelerate();
+}
+E. public abstract class Car {
+protected abstract void accelerate() {
+//more car can do
+}}
+
+---------------------------------------------------------------------------------------------------
+Q 6
+public class Student {
+public String name = "";
+public int age = 0;
+public String major = "Undeclared";
+public boolean fulltime = true;
+public void display() {
+System.out.println("Name: " + name + " Major: " + major); }
+public boolean isFullTime() {
+return fulltime;
+}
+}
+Given:
+Public class TestStudent {
+public static void main(String[] args) {
+Student bob = new Student ();
+bob.name = "Bob";
+bob.age = 18;
+bob.year = 1982;
+}
+}
+What is the result?
+A. year is set to 1982.
+B. bob.year is set to 1982
+C. A runtime error is generated.
+D. A compile time error is generated.
+
+----------------------------------------------------------------------------------------------
+Q 7
+public class Student {
+public String name = "";
+public int age = 0;
+public String major = "Undeclared";
+public boolean fulltime = true;
+public void display() {
+System.out.println("Name: " + name + " Major: " + major); }
+public boolean isFullTime() {
+return fulltime;
+}
+
+}
+Which line of code initializes a student instance?
+A. Student student1;
+B. Student student1 = Student.new();
+C. Student student1 = new Student();
+D. Student student1 = Student();
+
+----------------------------------------------------------------------------------------------------
+Q 8
+int [] array = {1,2,3,4,5};
+for (int i: array) {
+if ( i < 2) {
+keyword1 ;
+}
+System.out.println(i);
+if ( i == 3) {
+keyword2 ;
+}}
+What should keyword1 and keyword2 be respectively, in oreder to produce output 2345?
+A. continue, break
+B. break, break
+C. break, continue
+D. continue, continue
+
+-----------------------------------------------------------------------------------------------
+Q 9
+Class StaticField {
+static int i = 7;
+public static void main(String[] args) {
+StaticField obj = new StaticField();
+
+obj.i++;
+StaticField.i++;
+obj.i++;
+System.out.println(StaticField.i + " "+ obj.i);
+}
+}
+What is the result?
+A. 10 10
+B. 8 9
+C. 9 8
+D. 7 10
+
+------------------------------------------------------------------------------------------------
+Q 10
+Which two are valid array declaration?
+A. Object array[];
+B. Boolean array[3];
+C. int[] array;
+D. Float[2] array;
+
+------------------------------------------------------------------------------------------------------
+Q 11
+Given:
+class Overloading {
+int x(double d) {
+
+System.out.println("one");
+return 0;
+}
+String x(double d) {
+System.out.println("two");
+return null;
+}
+double x(double d) {
+System.out.println("three");
+return 0.0;
+}
+public static void main(String[] args) {
+new Overloading().x(4.0);
+}
+}
+What is the result?
+A. one
+B. two
+C. three
+D. Compilation fails.
+
+--------------------------------------------------------------------------------------------
+Q 12
+Given:
+public class MainMethod {
+void main() {
+
+System.out.println("one");
+}
+static void main(String args) {
+System.out.println("two");
+}
+public static void main(String[] args) {
+System.out.println("three");
+}
+void mina(Object[] args) {
+System.out.println("four");
+}
+}
+What is printed out when the program is excuted?
+A. one
+B. two
+C. three
+D. four
+
+---------------------------------------------------------------------------------------------
+Q 13
+A method is declared to take three arguments. A program calls this method and passes only two
+arguments. What is the results?
+A. Compilation fails.
+B. The third argument is given the value null.
+C. The third argument is given the value void.
+D. The third argument is given the value zero.
+E. The third argument is given the appropriate falsy value for its declared type. F) An exception
+occurs when the method attempts to access the third argument.
+
+
+-------------------------------------------------------------------------------------------
+Q 14
+public class ForTest {
+public static void main(String[] args) {
+int[] arrar = {1,2,3};
+for ( foo ) {
+}
+}
+}
+Which three are valid replacements for foo so that the program will compiled and run?
+A. int i: array
+B. int i = 0; i < 1; i++
+C. ;;
+D. ; i < 1; i++
+E. ; i < 1;
+
+---------------------------------------------------------------------------------------
+Q 15
+Given the code fragment:
+int b = 3;
+if ( !(b > 3)) {
+System.out.println("square ");
+}{
+System.out.println("circle ");
+}
+System.out.println("...");
+What is the result?
+
+A. square...
+B. circle...
+C. squarecircle...
+D. Compilation fails.
+
+----------------------------------------------------------------------------------------------
+Q 16
+Which three statements are benefits of encapsulation?
+A. allows a class implementation to change without changing t he clients
+B. protects confidential data from leaking out of the objects
+C. prevents code from causing exceptions
+D. enables the class implementation to protect its invariants
+E. permits classes to be combined into the same package
+F. enables multiple instances of the same class to be created safely
+
+--------------------------------------------------------------------------------------------
+Q 17
+What is the proper way to defined a method that take two int values and returns their sum as an int
+value?
+A. int sum(int first, int second) { first + second; }
+B. int sum(int first, second) { return first + second; }
+C. sum(int first, int second) { return first + second; }
+D. int sum(int first, int second) { return first + second; }
+E. void sum (int first, int second) { return first + second; }
+
+---------------------------------------------------------------------------------------
+Q 18
+Given the for loop construct:
+for ( expr1 ; expr2 ; expr3 ) {
+
+statement;
+}
+Which two statements are true?
+A. This is not the only valid for loop construct; there exits another form of for loop constructor.
+B. The expression expr1 is optional. it initializes the loop and is evaluated once, as the loop begin.
+C. When expr2 evaluates to false, the loop terminates. It is evaluated only after each iteration
+through the loop.
+D. The expression expr3 must be present. It is evaluated after each iteration through the loop.
+
+----------------------------------------------------------------------------------------------
+Q 19
+public class StringReplace {
+public static void main(String[] args) {
+String message = "Hi everyone!";
+System.out.println("message = " + message.replace("e", "X")); }
+}
+What is the result?
+A. message = Hi everyone!
+B. message = Hi XvXryonX!
+C. A compile time error is produced.
+
+D. A runtime error is produced.
+E. message =
+F. message = Hi Xveryone!
+
+---------------------------------------------------------------------------------------------------
+Q 20
+QUESTION NO: 96 
+Which two statements are true for a two-dimensional array?
+A. It is implemented as an array of the specified element type.
+B. Using a row by column convention, each row of a two-dimensional array must be of the same
+size
+C. At declaration time, the number of elements of the array in each dimension must be specified
+D. All methods of the class Object may be invoked on the two-dimensional array.
+------------------------------------------------------------------------------------------------------
