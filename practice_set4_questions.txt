@@ -1,0 +1,299 @@
+Q 1 Evaluate the CREATE TABLE statement: 
+CREATE TABLE products 
+(product_id NUMBER(6) CONSTRAINT prod_id_pk PRIMARY KEY, 
+product_name VARCHAR2(15)); 
+Which statement is true regarding the PROD_ID_PK constraint?
+A. It would be created only if a unique index is manually created first.
+B. It would be created and would use an automatically created unique index.
+C. It would be created and would use an automatically created nonunique index.
+D. It would be created and remains in a disabled state because no index is specified in the command.
+
+----------------------------------------------------------------------------------------------
+Q 2. Your company decided to give a monthly bonus of $50 to all the employees who have completed five years
+in the company. The following statement is written to display the LAST_NAME, DEPARTMENT_ID,
+and the total annual salary: 
+
+SELECT last_name, department_id, salary+50*12 "Annual Compensation" 
+FROM employees 
+WHERE MONTHS_BETWEEN(SYSDATE, hire_date)/12 >= 5; 
+When you execute the statement, the "Annual Compensation" is not computed correctly. What changes
+would you make to the query to calculate the annual compensation correctly?
+
+A. Change the SELECT clause to SELECT last_name, department_id, salary*12+50 "Annual Compensation".
+B. Change the SELECT clause to SELECT last_name, department_id, salary+(50*12) "Annual Compensation".
+C. Change the SELECT clause to SELECT last_name, department_id, (salary+50)*12 "Annual Compensation".
+D. Change the SELECT clause to SELECT last_name, department_id, (salary*12)+50 "Annual
+Compensation".
+
+---------------------------------------------------------------------------------------------
+Q 3 Your company wants to give 5% bonus to all the employees on their annual salary. The SALARY column
+stores the monthly salary for an employee. To check the total for annual salary and bonus amount for
+each employee, you issued the following SQL statement: 
+SELECT first_name, salary, salary*12+salary*12*.05 "ANNUAL SALARY + BONUS" 
+FROM employees; 
+
+
+Which statement is true regarding the above query
+
+
+A. It would execute and give you the desired output.
+B. It would not execute because the AS keyword is missing between the column name and the alias.
+C. It would not execute because double quotation marks are used instead of single quotation marks for
+assigning alias for the third column.
+D. It would execute but the result for the third column would be inaccurate because the parentheses for
+overriding the precedence of the operator are missing.
+
+----------------------------------------------------------------------------------
+Q 4. A non-correlated subquery can be defined as ____.
+A. a set of sequential queries, all of which must always return a single value
+B. a set of sequential queries, all of which must return values from the same table
+C. a SELECT statement that can be embedded in a clause of another SELECT statement only
+D. a set of one or more sequential queries in which generally the result of the inner query is used as the search
+value in the outer query
+
+--------------------------------------------------------------------------------------------------
+Q 5
+Evaluate the following SQL statement: 
+SELECT order_id, customer_id 
+FROM orders 
+WHERE order_date > 'June 30 2001'; 
+Which statement is true regarding the execution of this SQL statement
+
+A. It would not execute because 'June 30 2001' in the WHERE condition is not enclosed within double
+quotation marks.
+B. It would execute and would return ORDER_ID and CUSTOMER_ID for all records having
+ORDER_DATE greater than 'June 30 2001'.
+C. It would not execute because 'June 30 2001' in the WHERE condition cannot be converted implicitly and needs the use of the TO_DATE conversion function for proper execution.
+D. It would not execute because 'June 30 2001' in the WHERE condition cannot be converted implicitly and needs the use of the TO_CHAR conversion function for proper execution.
+
+------------------------------------------------------------------------------------------
+Q 6 Evaluate the following SQL statements: 
+Statement 1: 
+SELECT MAX(unit_price*quantity) "Maximum Order" 
+FROM order_items; 
+Statement 2: 
+SELECT MAX(unit_price*quantity) "Maximum Order" 
+FROM order_items 
+GROUP BY order_id; 
+Which statements are true regarding the output of these SQL statements? (Choose all that apply.)
+A. Statement 1 would return only one row of output.
+B. Both the statements would give the same output.
+C. Statement 2 would return multiple rows of output.
+D. Statement 1 would not return any row because the GROUP BY clause is missing.
+E. Both statements would ignore NULL values for the UNIT_PRICE and QUANTITY columns.
+
+-----------------------------------------------------------------------------------------------
+Q 7
+
+You need to display the ORDER_ID of the order that has the highest total value among all the orders in
+the ORDER_ITEMS table. 
+Which query would produce the desired output?
+
+A. SELECT order_id
+FROM order_items
+WHERE(unit_price*quantity) = MAX(unit_price*quantity)
+GROUP BY order_id;
+B. SELECT order_id
+FROM order_items
+WHERE(unit_price*quantity) = (SELECT MAX(unit_price*quantity)
+FROM order_items)
+GROUP BY order_id;
+C. SELECT order_id
+FROM order_items
+WHERE (unit_price*quantity) = (SELECT MAX(unit_price*quantity)
+FROM order_items
+GROUP BY order_id);
+D. SELECT order_id
+FROM order_items
+
+GROUP BY order_id
+HAVING SUM(unit_price*quantity) =(SELECT MAX(SUM(unit_price*quantity))
+FROM order_items GROUP BY order_id);
+
+--------------------------------------------------------------------------------------
+Q 8
+Which CREATE TABLE statement is valid?
+A. CREATE TABLE ord_details
+(ord_no NUMBER(2) PRIMARY KEY,
+item_no NUMBER(3) PRIMARY KEY,
+ord_date date NOT NULL);
+B. CREATE TABLE ord_details
+(ord_no NUMBER(2) UNIQUE, NOT NULL,
+item_no NUMBER(3),
+ord_date date DEFAULT SYSDATE NOT NULL);
+C. CREATE TABLE ord_details
+(ord_no NUMBER(2) ,
+item_no NUMBER(3),
+ord_date date DEFAULT NOT NULL,
+CONSTRAINT ord_uq UNIQUE (ord_no),
+CONSTRAINT ord_pk PRIMARY KEY (ord_no));
+D. CREATE TABLE ord_details
+(ord_no NUMBER(2),
+item_no NUMBER(3),
+ord_date date DEFAULT SYSDATE NOT NULL,
+CONSTRAINT ord_pk PRIMARY KEY (ord_no, item_no));
+
+------------------------------------------------------------------------------------------------
+Q 9
+You want to know the FIRST_NAME and SALARY for all employees who have the same manager as
+that of the employee with the first name 'Neena' and have salary equal to or greater than that of 'Neena'. 
+Which SQL statement would give you the desired result?
+A. SELECT first_name, salary
+FROM employees
+WHERE (manager_id, salary) >= ALL (SELECT manager_id, salary
+FROM employees
+WHERE first_name = 'Neena' )
+AND first_name <> 'Neena';
+B. SELECT first_name, salary
+FROM employees
+WHERE (manager_id, salary) >= (SELECT manager_id, salary
+FROM employees
+WHERE first_name = 'Neena' )
+AND first_name <> 'Neena';
+C. SELECT first_name, salary
+FROM employees
+WHERE (manager_id, salary) >= ANY (SELECT manager_id, salary
+FROM employees
+WHERE first_name = 'Neena' )
+AND first_name <> 'Neena';
+D. SELECT first_name, salary
+FROM employees
+WHERE ( manager_id = (SELECT manager_id
+FROM employees
+WHERE first_name = 'Neena' )
+AND salary >= ( SELECT salary
+FROM employees
+WHERE first_name = 'Neena' ) )
+AND first_name <> 'Neena';
+
+-------------------------------------------------------------------------------------------
+Q 10
+Which UPDATE statement is valid?
+
+A. UPDATE orders
+SET order_date = '12-mar-2007',
+order_total IS NULL
+WHERE order_id = 2455;
+B. UPDATE orders
+SET order_date = '12-mar-2007',
+order_total = NULL
+WHERE order_id = 2455;
+C. UPDATE orders
+SET order_date = '12-mar-2007'
+AND order_total = TO_NUMBER(NULL)
+WHERE order_id = 2455;
+D. UPDATE orders
+SET order_date = TO_DATE('12-mar-2007','dd-mon-yyyy'),
+SET order_total = TO_NUMBER(NULL)
+WHERE order_id = 2455;
+
+-----------------------------------------------------------------------------------------------------
+Q 11
+You need to create a table with the following column specifications: 
+1. Employee ID (numeric data type) for each employee 
+2. Employee Name, (character data type) which stores the employee name 
+3. Hire date, to store the date when the employee joined the organization 
+4. Status (character data type). It should contain the value if no data is entered.
+5. Resume (character large object [CLOB] data type), which would contain the resume submitted by the
+employee 
+Which is the correct syntax to create this table?
+A. CREATE TABLE EMP_1
+(emp_id NUMBER(4),
+emp_name VARCHAR2(25),
+start_date DATE,
+e_status VARCHAR2(10) DEFAULT 'ACTIVE',
+resume CLOB(200));
+B. CREATE TABLE 1_EMP
+(emp_id NUMBER(4),
+emp_name VARCHAR2(25),
+start_date DATE,
+emp_status VARCHAR2(10) DEFAULT 'ACTIVE',
+resume CLOB);
+C. CREATE TABLE 1_EMP
+(emp_id NUMBER(4),
+emp_name VARCHAR2(25),
+start_date DATE,
+emp_status VARCHAR2(10) DEFAULT "ACTIVE",
+resume CLOB);
+D. CREATE TABLE EMP_1
+(emp_id NUMBER,
+emp_name VARCHAR2(25),
+start_date DATE,
+emp_status VARCHAR2(10) DEFAULT 'ACTIVE',
+resume CLOB);
+
+-------------------------------------------------------------------------------------------
+Q 12
+You want to display all employees and their managers having 100 as the MANAGER_ID. You want the
+output in two columns: the first column would have the LAST_NAME of the managers and the second
+column would have LAST_NAME of the employees. 
+Which SQL statement would you execute?
+A. SELECT m.last_name "Manager", e.last_name "Employee"
+FROM employees m JOIN employees e
+ON m.employee_id = e.manager_id
+WHERE m.manager_id=100;
+B. SELECT m.last_name "Manager", e.last_name "Employee"
+FROM employees m JOIN employees e
+ON m.employee_id = e.manager_id
+WHERE e.manager_id=100;
+C. SELECT m.last_name "Manager", e.last_name "Employee"
+FROM employees m JOIN employees e
+ON e.employee_id = m.manager_id
+WHERE m.manager_id=100;
+D. SELECT m.last_name "Manager", e.last_name "Employee"
+FROM employees m JOIN employees e
+WHERE m.employee_id = e.manager_id AND e.manager_id=100;
+
+----------------------------------------------------------
+Q 13
+You want to display the LAST_NAME for the employees, LAST_NAME for the manager of the
+employees, and the DEPARTMENT_NAME for the employees having 100 as MANAGER_ID. The
+following SQL statement was written: 
+SELECT m.last_name "Manager", e.last_name "Employee", department_name "Department" 
+FROM employees m JOIN employees e 
+ON (m.employee_id = e.manager_id) 
+WHERE e.manager_id=100 
+JOIN departments d 
+ON (e.department_id = d.department_id); 
+Which statement is true regarding the output of this SQL statement?
+
+A. The statement would provide the desired results.
+B. The statement would not execute because the ON clause is written twice.
+C. The statement would not execute because the WHERE clause is wrongly placed.
+D. The statement would not execute because the self join uses the ON clause instead of the USING clause.
+
+
+---------------------------------------------------------------------------------------
+Q 14
+Which two statements are true regarding the GROUP BY clause in a SQL
+statement? (Choose two.)
+A. You can use column alias in the GROUP BY clause.
+B. Using the WHERE clause after the GROUP BY clause excludes the rows after creating groups.
+C. The GROUP BY clause is mandatory if you are using an aggregate function in the SELECT clause.
+D. Using the WHERE clause before the GROUP BY clause excludes the rows before creating groups.
+E. If the SELECT clause has an aggregate function, then those individual columns without an aggregate
+function in the SELECT clause should be included in the GROUP BY clause.
+
+------------------------------------------------------------------------------------------------
+
+Q 15
+Evaluate the following SQL statement: 
+SELECT employee_id, department_id 
+FROM employees 
+WHERE department_id= 50 ORDER BY department_id 
+UNION 
+SELECT employee_id, department_id 
+FROM employees 
+WHERE department_id= 90 
+UNION 
+SELECT employee_id, department_id 
+FROM employees 
+WHERE department_id= 10; 
+What would be the outcome of the above SQL statement?
+
+A. The statement would execute successfully and display all the rows in the ascending order of
+DEPARTMENT_ID.
+B. The statement would execute successfully but it will ignore the ORDER BY clause and display the rows in random order.
+C. The statement would not execute because the positional notation instead of the column name should be used with the ORDER BY clause.
+D. The statement would not execute because the ORDER BY clause should appear only at the end of the SQL statement, that is, in the last SELECT statement.
+---------------------------------------------------------------------------------------------
